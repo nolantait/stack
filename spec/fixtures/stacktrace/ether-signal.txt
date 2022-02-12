@@ -1,0 +1,95 @@
+0      PUSH1  => 60
+2      PUSH1  => 40
+4      MSTORE
+5      CALLDATASIZE
+6      ISZERO
+7      PUSH1  => 1d
+9      JUMPI
+10     PUSH1  => e0
+12     PUSH1  => 02
+14     EXP
+15     PUSH1  => 00
+17     CALLDATALOAD
+18     DIV
+19     PUSH4  => 7a6668bf
+24     DUP2
+25     EQ
+26     PUSH1  => 23
+28     JUMPI
+29     JUMPDEST
+30     PUSH1  => 3f
+32     PUSH1  => 02
+34     JUMP
+35     JUMPDEST
+36     PUSH1  => 3f
+38     PUSH1  => 04
+40     CALLDATALOAD
+41     PUSH1  => 24
+43     CALLDATALOAD
+44     PUSH1  => 00
+46     JUMPDEST
+47     PUSH2  => 1000
+50     DUP2
+51     LT
+52     ISZERO
+53     PUSH1  => 46
+55     JUMPI
+56     JUMPDEST
+57     PUSH1  => 01
+59     ADD
+60     PUSH1  => 2e
+62     JUMP
+63     JUMPDEST
+64     STOP
+65     JUMPDEST
+66     POP
+67     POP
+68     POP
+69     JUMP
+70     JUMPDEST
+71     PUSH1  => 60
+73     DUP3
+74     DUP2
+75     MSTORE
+76     PUSH20  => ffffffffffffffffffffffffffffffffffffffff
+97     CALLER
+98     AND
+99     PUSH1  => 80
+101    MSTORE
+102    DUP4
+103    SWAP1
+104    PUSH32  => dfe72b85658ece2ea9a0485273e99806605f396deff71c0650ea0e4bb691ca8b
+137    SWAP1
+138    PUSH1  => 40
+140    SWAP1
+141    LOG2
+142    PUSH20  => ffffffffffffffffffffffffffffffffffffffff
+163    CALLER
+164    DUP2
+165    AND
+166    SWAP1
+167    PUSH1  => 00
+169    SWAP1
+170    ADDRESS
+171    AND
+172    BALANCE
+173    PUSH1  => 60
+175    DUP3
+176    DUP2
+177    DUP2
+178    DUP2
+179    DUP6
+180    DUP9
+181    DUP4
+182    CALL
+183    SWAP4
+184    POP
+185    POP
+186    POP
+187    POP
+188    ISZERO
+189    ISZERO
+190    PUSH1  => 41
+192    JUMPI
+193    PUSH1  => 02
+195    JUMP

@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.describe Stack do
-  it "has a version number" do
-    expect(Stack::VERSION).not_to be nil
-  end
-
+RSpec.describe Stack::Disassemble do
   # Uses https://github.com/CoinCulture/evm-tools/blob/master/analysis/ethersignal/ethersignal.md
   # as a reference for implementation
 
-  describe "#disassemble" do
+  describe ".call" do
     it "disassembles the bytecode into the expected trace" do
       # EthersSignal contract, source @ https://github.com/CoinCulture/evm-tools/blob/master/analysis/ethersignal/ethersignal.md
       bytecode = "60606040523615601d5760e060020a60003504637a6668bf81146023575b" \
