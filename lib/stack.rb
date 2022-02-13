@@ -12,6 +12,7 @@ require_relative "stack/operations/modulo"
 require_relative "stack/operations/add_modulo"
 require_relative "stack/operations/multiply_modulo"
 require_relative "stack/operations/exponent"
+require_relative "stack/operations/sign_extend"
 
 # require_relative "stack/opcodes"
 require_relative "stack/disassemble"
