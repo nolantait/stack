@@ -16,6 +16,8 @@ module Stack
   class Error < StandardError; end
   # Your code goes here...
 
+  NotEnoughValues = Class.new(Error)
+
   def self.disassemble(bytecode)
     Disassemble.call(bytecode)
   end
