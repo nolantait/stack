@@ -1,43 +1,11 @@
 module Stack
   class Disassemble
-    class Stack
-      def initialize
-        @stack = []
-      end
-
-      def push(items)
-      end
-
-      def pop(n)
-      end
-    end
-
-    class Instruction
-      attr_reader :total_bytes, :operands
-
-      def initialize(*bytes)
-        @opcode = bytes[0]
-        @operands = bytes[1..-1]
-        @total_bytes = bytes.size
-        @operator= Opcodes["0x#{@opcode}"]
-      end
-
-      def call(stack)
-        @operator.call(stack, *@operands)
-      end
-
-      def name
-        @operator.name
-      end
-    end
-
     def self.call(bytecode)
       new(bytecode).call
     end
 
     def initialize(bytecode)
       @bytecode = bytecode
-      @stack = Stack.new
     end
 
     def call
