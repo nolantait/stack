@@ -8,7 +8,7 @@ require_relative "stack/operations/add"
 require_relative "stack/operations/multiply"
 require_relative "stack/operations/subtract"
 require_relative "stack/operations/divide"
-require_relative "stack/operations/remainder"
+require_relative "stack/operations/modulo"
 require_relative "stack/operations/add_modulo"
 require_relative "stack/operations/multiply_modulo"
 

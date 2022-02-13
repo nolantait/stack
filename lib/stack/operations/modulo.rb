@@ -1,5 +1,5 @@
 module Stack
-  class Remainder < Operation
+  class Modulo < Operation
     def call(stack)
       a, b, rest = stack
 
