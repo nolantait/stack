@@ -17,7 +17,7 @@ module Stack
         @opcode = bytes[0]
         @operands = bytes[1..-1]
         @total_bytes = bytes.size
-        @operator= Opscodes["0x#{opcode}"][@operands]
+        @operator= Opscodes["0x#{opcode}"]
       end
 
       def call(stack)
