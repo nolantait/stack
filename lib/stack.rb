@@ -17,6 +17,7 @@ require_relative "stack/operations/less_than"
 require_relative "stack/operations/greater_than"
 require_relative "stack/operations/equal"
 require_relative "stack/operations/is_zero"
+require_relative "stack/operations/and"
 
 # require_relative "stack/opcodes"
 require_relative "stack/disassemble"
