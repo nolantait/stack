@@ -8,6 +8,7 @@ require_relative "stack/operations/add"
 require_relative "stack/operations/multiply"
 require_relative "stack/operations/subtract"
 require_relative "stack/operations/divide"
+require_relative "stack/operations/remainder"
 
 # require_relative "stack/opcodes"
 require_relative "stack/disassemble"
