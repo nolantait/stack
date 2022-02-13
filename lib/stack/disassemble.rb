@@ -13,19 +13,21 @@ module Stack
     end
 
     class Instruction
+      attr_reader :total_bytes, :operands
+
       def initialize(*bytes)
         @opcode = bytes[0]
         @operands = bytes[1..-1]
         @total_bytes = bytes.size
-        @operator= Opscodes["0x#{opcode}"]
+        @operator= Opcodes["0x#{@opcode}"]
       end
 
       def call(stack)
         @operator.call(stack, *@operands)
       end
 
-      def print
-        "#{@total_bytes}     #{Opscodes["0x#{@opcode}"].to_s} #{"  => #{@operands.join}"}"
+      def name
+        @operator.name
       end
     end
 
@@ -39,6 +41,15 @@ module Stack
     end
 
     def call
+      byte_index = 0
+
+      instructions.map do |instruction|
+        dissasembly = "#{byte_index}      #{instruction.name}"
+        dissasembly += "  => #{instruction.operands.join(", ")}" if instruction.total_bytes > 1
+        dissasembly.tap do |result|
+          byte_index += instruction.total_bytes
+        end
+      end.join("\n")
     end
 
     private
@@ -64,15 +75,11 @@ module Stack
           case
           when byte.nil? # We have parsed all the bytecode
             more_bytes = false
-            break
-
           when byte.chars[0] == "6" # Then its a push bytecode that takes another byte
-            yielder << [byte, byte[index + 1]]
+            yielder << [byte, bytes[index + 1]]
             index += 2
-            break
-
           else
-            yielder << [byte]
+            yielder << byte
             index += 1
           end
         end

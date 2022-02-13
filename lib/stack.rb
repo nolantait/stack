@@ -23,7 +23,7 @@ require_relative "stack/operations/exclusive_or"
 require_relative "stack/operations/not"
 require_relative "stack/operations/push"
 
-# require_relative "stack/opcodes"
+require_relative "stack/opcodes"
 require_relative "stack/disassemble"
 
 module Stack

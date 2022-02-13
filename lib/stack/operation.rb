@@ -4,15 +4,19 @@ module Stack
       new(name, gas_cost)
     end
 
-    attr_reader :arguments
+    attr_reader :name
 
     def initialize(name, gas_cost)
       @name = name
       @gas_cost = gas_cost
     end
 
-    def call(stack)
+    def call(stack, *args)
       raise NotImplementedError
+    end
+
+    def to_s
+      "#{self.class.name}(name: #{@name}, gas_cost: #{@gas_cost})"
     end
 
     def raise_missing_stack_values(stack)
