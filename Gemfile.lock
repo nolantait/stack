@@ -3,6 +3,7 @@ PATH
   specs:
     stack (0.1.0)
       dry-container
+      dry-equalizer
 
 GEM
   remote: https://rubygems.org/
@@ -20,6 +21,7 @@ GEM
       dry-configurable (~> 0.13, >= 0.13.0)
     dry-core (0.7.1)
       concurrent-ruby (~> 1.0)
+    dry-equalizer (0.3.0)
     method_source (1.0.0)
     parallel (1.21.0)
     parser (3.1.0.0)

@@ -26,5 +26,13 @@ RSpec.describe Stack::Runtime do
 
       expect(runtime.counter).to eq 2
     end
+
+    it "adds executed instructions to the context" do
+      runtime = described_class.new
+      instruction = Stack::Instruction.new(60, 04)
+      runtime.call(instruction)
+
+      expect(runtime.context).to eq({ 0 => Stack::Instruction.new(60, 04) })
+    end
   end
 end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "dry-container"
+require "dry-equalizer"
 
 require_relative "stack/version"
 require_relative "stack/operation"

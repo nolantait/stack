@@ -1,6 +1,8 @@
 module Stack
   class Instruction
-    attr_reader :total_bytes, :operands
+    include Dry::Equalizer(:opcode, :operands)
+
+    attr_reader :opcode, :total_bytes, :operands
 
     def initialize(*bytes)
       @opcode = bytes[0]                # The register for the operation like ADD
