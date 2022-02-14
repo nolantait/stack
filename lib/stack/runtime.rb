@@ -5,33 +5,30 @@ module Stack
 
     MAX_STACK_DEPTH = 1024.freeze
 
-    attr_reader :counter, :gas, :stack, :context
+    attr_reader :counter, :gas, :stack, :history
 
     def initialize(gas = 1000000000)
       @stack = []
       @counter = 0
       @gas = gas
-      @context = {}
+      @history = {}
     end
 
     def call(instruction)
-      @context[@counter] = instruction
-      handle_gas_costs(instruction)
-      update_stack(instruction)
-      @counter += instruction.total_bytes
-    end
+      @history[@counter] = instruction
 
-    private
+      stack, counter, gas = instruction.call(
+        stack: @stack,
+        counter: @counter,
+        gas: @gas
+      )
 
-    def update_stack(instruction)
-      @stack = instruction.call(@stack).tap do |stack|
-        raise StackOverflow if stack.size > MAX_STACK_DEPTH
-      end
-    end
+      raise StackOverflow if stack.size > MAX_STACK_DEPTH
+      raise OutOfGas if gas < 0
 
-    def handle_gas_costs(instruction)
-      @gas -= instruction.gas_cost
-      raise OutOfGas if @gas < 0
+      @stack = stack
+      @counter = counter
+      @gas = gas
     end
   end
 end

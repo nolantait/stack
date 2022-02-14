@@ -32,7 +32,7 @@ RSpec.describe Stack::Runtime do
       instruction = Stack::Instruction.new(60, 04)
       runtime.call(instruction)
 
-      expect(runtime.context).to eq({ 0 => Stack::Instruction.new(60, 04) })
+      expect(runtime.history).to eq({ 0 => Stack::Instruction.new(60, 04) })
     end
   end
 end

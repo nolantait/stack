@@ -11,8 +11,22 @@ module Stack
       @operator= Opcodes["0x#{@opcode}"]# The operation to be performed
     end
 
-    def call(stack)
-      @operator.call(stack, *@operands)
+    # Call is written this way to allow easier writing of opcode functions.
+    # Default values allow operations to omit return values if they do not
+    # modify them.
+    def call(stack:, counter:, gas:)
+      @operator.call(
+        stack: stack,
+        counter: counter,
+        gas: gas,
+        operands: @operands
+      ).tap do |return_values|
+        stack = return_values.fetch(:stack, stack)
+        counter = return_values.fetch(:counter, counter + @total_bytes)
+        gas = return_values.fetch(:gas, gas - @operator.gas_cost)
+      end
+
+      return stack, counter, gas
     end
 
     def name

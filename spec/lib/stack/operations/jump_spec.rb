@@ -1,8 +1,14 @@
 require "spec_helper"
 
 RSpec.describe Stack::Jump do
-  it "jumps to a desination" do
-    stack = []
-    expect(described_class[:JUMP, 3].call(stack)).to eq []
+  let(:stack) { [2] }
+  let(:result) { described_class[:JUMP, 3].call(stack: stack, counter: 0) }
+
+  it "returns the popped stack" do
+    expect(result.fetch(:stack)).to eq []
+  end
+
+  it "sets the counter to the top of the stack" do
+    expect(result.fetch(:counter)).to eq 2
   end
 end

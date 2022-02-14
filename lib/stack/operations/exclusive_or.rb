@@ -1,10 +1,20 @@
 module Stack
   class ExclusiveOr < Operation
-    def call(stack)
-      a, b = stack[0..1]
-      raise_missing_stack_values(stack) if b.nil?
+    def call(stack:, **)
+      return {
+        stack: update(stack)
+      }
+    end
 
-      stack.drop(2).unshift(a ^ b)
+    private
+
+    def update(stack)
+      case stack
+      in [] then raise_missing_stack_values(stack)
+      in [_] then raise_missing_stack_values(stack)
+      in [a, b, *] then stack.drop(2).unshift(a ^ b)
+      else raise ArgumentError
+      end
     end
   end
 end

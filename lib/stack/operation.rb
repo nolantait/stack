@@ -11,7 +11,7 @@ module Stack
       @gas_cost = gas_cost
     end
 
-    def call(stack, *args)
+    def call(runtime)
       raise NotImplementedError
     end
     

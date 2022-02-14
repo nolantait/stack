@@ -1,9 +1,12 @@
 module Stack
   class Jump < Operation
-    def call(stack)
-      # Does nothing
-      # Handled by the Stack::Runtime to execute control flow with the counter
-      return stack
+    def call(stack:, counter:)
+      destination, rest = stack
+
+      return {
+        stack: stack.drop(1),
+        counter: destination
+      }
     end
   end
 end

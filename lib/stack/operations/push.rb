@@ -1,7 +1,9 @@
 module Stack
   class Push < Operation
-    def call(stack, *args)
-     stack.unshift(*args)
+    def call(stack:, operands:, **)
+     return {
+       stack: stack.unshift(operands).flatten
+     }
     end
   end
 end

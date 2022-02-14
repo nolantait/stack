@@ -1,6 +1,14 @@
 module Stack
   class SignExtend < Operation
-    def call(stack)
+    def call(stack:, **)
+      return {
+        stack: update(stack)
+      }
+    end
+
+    private
+
+    def update(stack)
       a, b, rest = stack
 
       case a

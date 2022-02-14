@@ -1,9 +1,9 @@
 module Stack
   class JumpDestination < Operation
-    def call(stack)
+    def call(args = [])
       # Does nothing with the stack.
       # Placeholder for a JUMP or JUMPI instruction destination
-      return stack
+      return {}
     end
   end
 end

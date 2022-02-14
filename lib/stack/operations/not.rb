@@ -1,10 +1,19 @@
 module Stack
   class Not < Operation
-    def call(stack)
-      a = stack[0]
-      raise_missing_stack_values(stack) if a.nil?
+    def call(stack:, **)
+      return {
+        stack: update(stack)
+      }
+    end
 
-      stack.drop(1).unshift(~a)
+    private
+
+    def update(stack)
+      case stack
+      in [] then raise_missing_stack_values(stack)
+      in [a, *] then stack.drop(1).unshift(~a)
+      else raise ArgumentError
+      end
     end
   end
 end
