@@ -4,7 +4,7 @@ module Stack
       new(name, gas_cost)
     end
 
-    attr_reader :name
+    attr_reader :name, :gas_cost
 
     def initialize(name, gas_cost)
       @name = name
@@ -14,7 +14,7 @@ module Stack
     def call(stack, *args)
       raise NotImplementedError
     end
-
+    
     def to_s
       "#{self.class.name}(name: #{@name}, gas_cost: #{@gas_cost})"
     end

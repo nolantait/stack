@@ -1,5 +1,12 @@
 module Stack
   class Disassemble
+
+    Format = lambda do |instruction, byte_index|
+      [byte_index, "      ", instruction.name].tap do |output|
+        output.concat(["  => ", instruction.operands.join(", ")]) if instruction.total_bytes > 1
+      end.join
+    end
+
     def self.call(bytecode)
       new(bytecode).call
     end
@@ -12,9 +19,7 @@ module Stack
       byte_index = 0
 
       instructions.map do |instruction|
-        dissasembly = "#{byte_index}      #{instruction.name}"
-        dissasembly += "  => #{instruction.operands.join(", ")}" if instruction.total_bytes > 1
-        dissasembly.tap do |result|
+        Format.call(instruction, byte_index).tap do |result|
           byte_index += instruction.total_bytes
         end
       end.join("\n")

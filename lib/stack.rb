@@ -25,6 +25,7 @@ require_relative "stack/operations/push"
 
 require_relative "stack/opcodes"
 require_relative "stack/instruction"
+require_relative "stack/runtime"
 require_relative "stack/disassemble"
 
 module Stack
