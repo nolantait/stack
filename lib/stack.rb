@@ -27,6 +27,7 @@ require_relative "stack/opcodes"
 require_relative "stack/instruction"
 require_relative "stack/runtime"
 require_relative "stack/disassemble"
+require_relative "stack/bytecode"
 
 module Stack
   class Error < StandardError; end

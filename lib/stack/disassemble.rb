@@ -12,7 +12,7 @@ module Stack
     end
 
     def initialize(bytecode)
-      @bytecode = bytecode
+      @bytecode = Stack::Bytecode.new(bytecode)
     end
 
     def call
@@ -28,34 +28,8 @@ module Stack
     private
 
     def instructions
-      bytecode_enumerator.map do |bytes|
+      @bytecode.map do |bytes|
         Instruction.new(*bytes)
-      end
-    end
-
-    def bytes
-      @bytecode.chars.each_slice(2).map(&:join)
-    end
-
-    def bytecode_enumerator
-      Enumerator.new do |yielder|
-        index = 0
-        more_bytes = true
-
-        while more_bytes
-          byte = bytes[index]
-
-          case
-          when byte.nil? # We have parsed all the bytecode
-            more_bytes = false
-          when byte.chars[0] == "6" # Then its a push bytecode that takes another byte
-            yielder << [byte, bytes[index + 1]]
-            index += 2
-          else
-            yielder << byte
-            index += 1
-          end
-        end
       end
     end
   end
