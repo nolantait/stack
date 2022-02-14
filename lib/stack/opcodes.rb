@@ -60,7 +60,7 @@ module Stack
 
     # register "0x50", Pop[:POP, 2]
     # register "0x51", MemoryLoad[:MLOAD, 3]
-    # register "0x52", MemoryStore[:MSTORE, 3]
+    register "0x52", MemoryStore[:MSTORE, 3]
     # register "0x53", MemoryStore8[:MSTORE8, 3]
     # register "0x54", StorageLoad[:SLOAD, 800]
     # register "0x55", StorageStore[:SSTORE, 0]
