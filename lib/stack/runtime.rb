@@ -29,6 +29,9 @@ module Stack
       @stack = stack
       @counter = counter
       @gas = gas
+
+    rescue ExecutionStopped
+      return self
     end
   end
 end

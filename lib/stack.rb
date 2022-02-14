@@ -25,6 +25,7 @@ require_relative "stack/operations/not"
 require_relative "stack/operations/push"
 require_relative "stack/operations/jump"
 require_relative "stack/operations/jump_destination"
+require_relative "stack/operations/stop"
 
 require_relative "stack/opcodes"
 require_relative "stack/instruction"
@@ -37,6 +38,7 @@ module Stack
   # Your code goes here...
 
   MissingStackValues = Class.new(Error)
+  ExecutionStopped = Class.new(Error)
 
   def self.disassemble(bytecode)
     Disassemble.call(bytecode)
