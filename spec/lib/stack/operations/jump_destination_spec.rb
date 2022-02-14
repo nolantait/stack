@@ -1,8 +1,8 @@
 require "spec_helper"
 
 RSpec.describe Stack::JumpDestination do
-  # it "adds two numbers on the stack" do
-  #   stack = [1, 2, 3]
-  #   expect(described_class[:ADD, 3].call(stack)).to eq [3, 3]
-  # end
+  it "does nothing to the stack, acts as a placeholder for JUMP and JUMPI" do
+    stack = []
+    expect(described_class[:ADD, 3].call(stack)).to eq []
+  end
 end

@@ -11,9 +11,12 @@ module Stack
       @stack = []
       @counter = 0
       @gas = gas
+      @context = {}
     end
 
     def call(instruction)
+      @context[@counter] = instruction
+
       @gas -= instruction.gas_cost
       raise OutOfGas if @gas < 0
 
