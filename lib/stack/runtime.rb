@@ -22,7 +22,12 @@ module Stack
       @context = {
         data: [],
         caller: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c",
-        address: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c"
+        address: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c",
+        access_sets: {
+          "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c" => {
+            balance: "0x1"
+          }
+        }
       }
     end
 

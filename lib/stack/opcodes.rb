@@ -35,7 +35,7 @@ module Stack
     # register "0x20", HashFunction[:SHA3, 30]
 
     register "0x30", Address[:ADDRESS, 2]
-    # register "0x31", Balance[:BALANCE, 700]
+    register "0x31", Balance[:BALANCE, 100]
     # register "0x32", Origin[:ORIGIN, 2]
     register "0x33", Caller[:CALLER, 2]
     # register "0x34", CallValue[:CALLVALUE, 2]
