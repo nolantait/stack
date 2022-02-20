@@ -67,7 +67,7 @@ module Stack
     # register "0x54", StorageLoad[:SLOAD, 800]
     # register "0x55", StorageStore[:SSTORE, 0]
     register "0x56", Jump[:JUMP, 8]
-    # register "0x57", ConditionalJump[:JUMPI, 10]
+    register "0x57", ConditionalJump[:JUMPI, 10]
     # register "0x58", ProgramCounter[:PC, 2]
     # register "0x59", MemorySize[:MSIZE, 2]
     # register "0x5A", GasRemaining[:GAS, 2]

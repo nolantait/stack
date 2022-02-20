@@ -2,7 +2,7 @@
 
 module Stack
   class Disassemble
-    SPACING = " " * 5
+    SPACING = " " * 6
     DELIMITER = "  => "
 
     Format = lambda do |instruction, byte_index|
