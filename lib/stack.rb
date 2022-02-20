@@ -35,6 +35,7 @@ require_relative "stack/operations/pop"
 require_relative "stack/operations/caller"
 require_relative "stack/operations/swap"
 require_relative "stack/operations/log"
+require_relative "stack/operations/address"
 
 require_relative "stack/opcodes"
 require_relative "stack/instruction"

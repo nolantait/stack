@@ -16,11 +16,13 @@ module Stack
       @memory = {}
       @history = {}
 
-      # Stubbed for now. Context is data that is never modified.
+      # Stubbed for now...
+      # Context is data that is never modified.
       # Context is generated from the contract call
       @context = {
         data: [],
-        caller: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c"
+        caller: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c",
+        address: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c"
       }
     end
 

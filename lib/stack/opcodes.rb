@@ -34,7 +34,7 @@ module Stack
 
     # register "0x20", HashFunction[:SHA3, 30]
 
-    # register "0x30", Address[:ADDRESS, 2]
+    register "0x30", Address[:ADDRESS, 2]
     # register "0x31", Balance[:BALANCE, 700]
     # register "0x32", Origin[:ORIGIN, 2]
     register "0x33", Caller[:CALLER, 2]
@@ -137,11 +137,11 @@ module Stack
     register "0x9D", Swap[:SWAP14, 3]
     register "0x9E", Swap[:SWAP15, 3]
     register "0x9F", Swap[:SWAP16, 3]
-    # register "0xA0", Log[:LOG0, 375]
-    # register "0xA1", Log[:LOG1, 750]
-    # register "0xA2", Log[:LOG2, 1125]
-    # register "0xA3", Log[:LOG3, 1500]
-    # register "0xA4", Log[:LOG4, 1875]
+    register "0xA0", Log[:LOG0, 375]
+    register "0xA1", Log[:LOG1, 750]
+    register "0xA2", Log[:LOG2, 1125]
+    register "0xA3", Log[:LOG3, 1500]
+    register "0xA4", Log[:LOG4, 1875]
 
     # register "0xF0", Create[:CREATE, 32000]
     # register "0xF1", Call[:CALL, 40]
