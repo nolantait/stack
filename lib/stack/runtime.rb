@@ -7,12 +7,13 @@ module Stack
 
     MAX_STACK_DEPTH = 1024
 
-    attr_reader :counter, :gas, :stack, :history, :context
+    attr_reader :counter, :gas, :stack, :memory, :history, :context
 
     def initialize(gas = 1000000000)
       @stack = []
       @counter = 0
       @gas = gas
+      @memory = {}
       @history = {}
 
       # Stubbed for now. Context is data that is never modified.
@@ -26,15 +27,11 @@ module Stack
     def call(instruction)
       @history[@counter] = instruction
 
-      new_stack, new_counter, new_gas =
-        instruction.call(stack:, counter:, gas:, **@context)
+      @stack, @counter, @gas, @memory =
+        instruction.call(stack:, counter:, gas:, memory:, context:)
 
-      fail StackOverflow if new_stack.size > MAX_STACK_DEPTH
-      fail OutOfGas if new_gas.negative?
-
-      @stack = new_stack
-      @counter = new_counter
-      @gas = new_gas
+      fail StackOverflow if @stack.size > MAX_STACK_DEPTH
+      fail OutOfGas if @gas.negative?
     rescue ExecutionStopped
       self
     end

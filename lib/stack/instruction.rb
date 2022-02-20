@@ -16,14 +16,22 @@ module Stack
     # Call is written this way to allow easier writing of opcode functions.
     # Default values allow operations to omit return values if they do not
     # modify them.
-    def call(stack:, counter:, gas:)
-      @operator.call(stack:, counter:, gas:, operands: @operands).tap do |return_values|
+    def call(stack:, counter:, gas:, memory:, context:)
+      @operator.call(
+        stack:,
+        counter:,
+        gas:,
+        memory:,
+        operands: @operands,
+        **context
+      ).tap do |return_values|
         stack = return_values.fetch(:stack, stack)
         counter = return_values.fetch(:counter, counter + @total_bytes)
         gas = return_values.fetch(:gas, gas - @operator.gas_cost)
+        memory = return_values.fetch(:memory, memory)
       end
 
-      [stack, counter, gas]
+      [stack, counter, gas, memory]
     end
 
     def name
