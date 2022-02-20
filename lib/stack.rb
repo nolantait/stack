@@ -37,6 +37,7 @@ require_relative "stack/operations/swap"
 require_relative "stack/operations/log"
 require_relative "stack/operations/address"
 require_relative "stack/operations/balance"
+require_relative "stack/operations/call"
 
 require_relative "stack/opcodes"
 require_relative "stack/instruction"
