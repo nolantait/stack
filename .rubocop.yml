@@ -5,6 +5,7 @@ require:
 
 # ==================== Main ==========================
 AllCops:
+  TargetRubyVersion: 2.7
   DisplayCopNames: true
   Exclude:
     - "bin/**/*"
