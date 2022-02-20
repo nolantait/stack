@@ -16,7 +16,7 @@ module Stack
         index = 0
 
         while (byte = bytes[index])
-          next_byte = push_opcode?(byte) ? [byte, bytes[index + 1]] : [byte]
+          next_byte = handle_byte(byte, index)
           yield next_byte if block_given?
           parsed.push(next_byte)
           index += next_byte.size
@@ -26,8 +26,18 @@ module Stack
 
     private
 
+    def handle_byte(byte, index)
+      push_opcode?(byte) ? fetch_push_bytes(byte, index) : [byte]
+    end
+
+    def fetch_push_bytes(byte, index)
+      offset = index + ("0x#{byte}".to_i(16) - 95)
+      arguments = bytes[(index + 1)..offset]
+      [byte, arguments].flatten
+    end
+
     def push_opcode?(byte)
-      byte[0] == "6"
+      %w[6 7].include? byte[0]
     end
 
     def bytes
