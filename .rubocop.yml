@@ -209,6 +209,7 @@ Naming/VariableNumber:
     - capture3
   Exclude:
     - "lib/stack/opcodes.rb"
+    - "spec/lib/stack/operations/**/*.rb"
 Naming/BlockForwarding:
   Enabled: true
 Naming/InclusiveLanguage:

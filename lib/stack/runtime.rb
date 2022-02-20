@@ -5,6 +5,17 @@ module Stack
     OutOfGas = Class.new(StandardError)
     StackOverflow = Class.new(StandardError)
 
+    DEFAULT_CONTEXT = {
+      data: [],
+      caller: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c",
+      address: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c",
+      access_sets: {
+        "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c" => {
+          balance: "0x1"
+        }
+      }
+    }.freeze
+
     MAX_STACK_DEPTH = 1024
 
     attr_reader :counter, :gas, :stack, :memory, :history, :context
@@ -19,16 +30,7 @@ module Stack
       # Stubbed for now...
       # Context is data that is never modified.
       # Context is generated from the contract call
-      @context = {
-        data: [],
-        caller: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c",
-        address: "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c",
-        access_sets: {
-          "0xbe862ad9abfe6f22bcb087716c7d89a26051f74c" => {
-            balance: "0x1"
-          }
-        }
-      }
+      @context = DEFAULT_CONTEXT
     end
 
     def call(instruction)
