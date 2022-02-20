@@ -27,6 +27,7 @@ require_relative "stack/operations/jump"
 require_relative "stack/operations/jump_destination"
 require_relative "stack/operations/stop"
 require_relative "stack/operations/memory_store"
+require_relative "stack/operations/call_data_size"
 
 require_relative "stack/opcodes"
 require_relative "stack/instruction"
