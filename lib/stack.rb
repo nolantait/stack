@@ -6,6 +6,7 @@ require "dry-container"
 require "dry-equalizer"
 
 require_relative "stack/version"
+require_relative "stack/error"
 require_relative "stack/operation"
 require_relative "stack/operations/add"
 require_relative "stack/operations/multiply"
@@ -52,7 +53,6 @@ module Stack
   # well suited for learning about how things work as ruby code can be
   # remarkably expressable while still being correct vs pseudo code which can be
   # quite abstract. Ruby is beautiful.
-  class Error < StandardError; end
 
   def self.disassemble(bytecode)
     Disassemble.call(bytecode)

@@ -7,7 +7,7 @@ RSpec.describe Stack::Disassemble do
       expected_stacktrace =
         "0      PUSH1  => 05\n" \
         "2      PUSH1  => 04\n" \
-        "4      ADD"
+        "4      ADD\n"
 
       expect(Stack.disassemble(bytecode)).to eq(expected_stacktrace)
     end

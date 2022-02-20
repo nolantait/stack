@@ -8,13 +8,6 @@ module Stack
 
     # Allows initialization with a hash syntax:
     # e.g. Stop[:STOP, 3]
-
-    MissingStackValues = Class.new(Error)
-
-    # Called during STOP opcode 0x00 and rescued in the runtime to return
-    # itself.
-    ExecutionStopped = Class.new(Error)
-
     def self.[](name, gas_cost)
       new(name, gas_cost)
     end
