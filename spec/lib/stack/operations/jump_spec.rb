@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe Stack::Jump do
   let(:stack) { [2] }
-  let(:result) { described_class[:JUMP, 3].call(stack: stack, counter: 0) }
+  let(:result) { described_class[:JUMP, 3].call(stack:, counter: 0) }
 
   it "returns the popped stack" do
     expect(result.fetch(:stack)).to eq []

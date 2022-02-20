@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe Stack::AddModulo do
-  let(:result) { described_class[:ADDMOD, 3].call(stack: stack) }
+  let(:result) { described_class[:ADDMOD, 3].call(stack:) }
 
   context "when denominator is zero" do
     let(:stack) { [4, 2, 1, 9] }

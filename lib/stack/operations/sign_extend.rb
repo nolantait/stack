@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Stack
   class SignExtend < Operation
     def call(stack:, **)
-      return {
+      {
         stack: update(stack)
       }
     end
@@ -9,20 +11,34 @@ module Stack
     private
 
     def update(stack)
-      a, b, rest = stack
+      a, b, = stack
 
-      case a
-      when 1..32
-        bit = a * 8 + 7
-        mask = 1 - bit
-        if b & mask == 0 # extend 0's
-          stack.drop(2).unshift(b & (mask - 1))
-        else # extend 1's
-          stack.drop(2).unshift(b | ((2**256) - mask))
-        end
+      if a < 32
+        stack.drop(2).unshift(extend_number(b, bitmask(a)))
       else
         stack.drop(2).unshift(b)
       end
+    end
+
+    def extend_number(number, mask)
+      if (number & mask).zero?
+        extend_zeros(number, mask)
+      else
+        extend_ones(number, mask)
+      end
+    end
+
+    def extend_ones(number, mask)
+      number | ((2**256) - mask)
+    end
+
+    def extend_zeros(number, mask)
+      number & (mask - 1)
+    end
+
+    def bitmask(number)
+      bit = (number * 8) + 7
+      1 - bit
     end
   end
 end

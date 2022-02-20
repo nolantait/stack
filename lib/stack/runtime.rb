@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Stack
   class Runtime
     OutOfGas = Class.new(StandardError)
     StackOverflow = Class.new(StandardError)
 
-    MAX_STACK_DEPTH = 1024.freeze
+    MAX_STACK_DEPTH = 1024
 
     attr_reader :counter, :gas, :stack, :history
 
@@ -17,21 +19,16 @@ module Stack
     def call(instruction)
       @history[@counter] = instruction
 
-      stack, counter, gas = instruction.call(
-        stack: @stack,
-        counter: @counter,
-        gas: @gas
-      )
+      new_stack, new_counter, new_gas = instruction.call(stack:, counter:, gas:)
 
-      raise StackOverflow if stack.size > MAX_STACK_DEPTH
-      raise OutOfGas if gas < 0
+      fail StackOverflow if new_stack.size > MAX_STACK_DEPTH
+      fail OutOfGas if new_gas.negative?
 
-      @stack = stack
-      @counter = counter
-      @gas = gas
-
+      @stack = new_stack
+      @counter = new_counter
+      @gas = new_gas
     rescue ExecutionStopped
-      return self
+      self
     end
   end
 end

@@ -4,7 +4,7 @@ RSpec.describe Stack::Disassemble do
   describe ".call" do
     it "disassembles the bytecode into the expected trace" do
       bytecode = "6005600401"
-      expected_stacktrace = 
+      expected_stacktrace =
         "0      PUSH1  => 05\n" \
         "2      PUSH1  => 04\n" \
         "4      ADD"

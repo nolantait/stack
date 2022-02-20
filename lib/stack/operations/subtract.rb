@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Stack
   class Subtract < Operation
     def call(stack:, **)
-      return {
+      {
         stack: update(stack)
       }
     end
@@ -10,10 +12,10 @@ module Stack
 
     def update(stack)
       case stack
-      in [] then raise_missing_stack_values(stack)
-      in [_, 0, *] then stack.drop(2).unshift(0)
-      in [a, b, *] then stack.drop(2).unshift(a - b)
-      else raise ArgumentError
+        in [] then raise_missing_stack_values(stack)
+        in [_, 0, *] then stack.drop(2).unshift(0)
+        in [a, b, *] then stack.drop(2).unshift(a - b)
+        else fail ArgumentError
       end
     end
   end

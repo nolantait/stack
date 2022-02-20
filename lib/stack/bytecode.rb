@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Stack
   class Bytecode
     include Enumerable
@@ -9,24 +11,15 @@ module Stack
       @raw_bytecode = raw_bytecode
     end
 
-    def each(&block)
-      index = 0
-      more_bytes = true
+    def each
+      [].tap do |parsed|
+        index = 0
 
-      while more_bytes
-        byte = bytes[index]
-
-        if byte.nil?
-          more_bytes = false
-          next
-        end
-
-        if push_opcode?(byte)
-          block.call [byte, bytes[index + 1]]
-          index += 2
-        else
-          block.call byte
-          index += 1
+        while (byte = bytes[index])
+          next_byte = push_opcode?(byte) ? [byte, bytes[index + 1]] : [byte]
+          yield next_byte if block_given?
+          parsed.push(next_byte)
+          index += next_byte.size
         end
       end
     end
@@ -34,7 +27,8 @@ module Stack
     private
 
     def push_opcode?(byte)
-      byte.chars[0] == "6"
+      puts byte
+      byte[0] == "6"
     end
 
     def bytes

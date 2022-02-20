@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module Stack
   class Disassemble
-
     Format = lambda do |instruction, byte_index|
-      [byte_index, "      ", instruction.name].tap do |output|
+      formatted_bytes = [byte_index, "      ", instruction.name].tap do |output|
         output.concat(["  => ", instruction.operands.join(", ")]) if instruction.total_bytes > 1
-      end.join
+      end
+
+      formatted_bytes.join
     end
 
     def self.call(bytecode)
@@ -18,11 +21,13 @@ module Stack
     def call
       byte_index = 0
 
-      instructions.map do |instruction|
-        Format.call(instruction, byte_index).tap do |result|
+      formatted_instructions = instructions.map do |instruction|
+        Format.call(instruction, byte_index).tap do |_result|
           byte_index += instruction.total_bytes
         end
-      end.join("\n")
+      end
+
+      formatted_instructions.join("\n")
     end
 
     private

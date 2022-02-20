@@ -199,6 +199,12 @@ Metrics/BlockLength:
     - "spec/**/*"
 Metrics/ParameterLists:
   Max: 3
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+  AllowedIdentifiers:
+    - capture3
+  Exclude:
+    - "lib/stack/opcodes.rb"
 Naming/BlockForwarding:
   Enabled: true
 Naming/InclusiveLanguage:
@@ -219,10 +225,6 @@ Naming/MethodName:
     - Version
 Naming/RescuedExceptionsVariableName:
   PreferredName: error
-Naming/VariableNumber:
-  EnforcedStyle: snake_case
-  AllowedIdentifiers:
-    - capture3
 Naming/MethodParameterName:
   AllowNamesEndingInNumbers: false
 Security/IoMethods:
@@ -311,7 +313,7 @@ Style/MethodCallWithArgsParentheses:
   AllowParenthesesInMultilineCall: true
   IgnoreMacros: false
 Style/MethodDefParentheses:
-  EnforcedStyle: false
+  EnforcedStyle: require_parentheses
 Style/MissingElse:
   Enabled: false
 Style/MultilineInPatternThen:
@@ -438,6 +440,8 @@ Performance/Sum:
   Enabled: true
 
 # ==================== RSpec ============================
+RSpec/FilePath:
+  Enabled: false
 RSpec/ContextWording:
   Prefixes:
     - when
@@ -459,7 +463,7 @@ RSpec/Dialect:
     example: it
     example_group: context
     expect_any_instance_of: expect
-    is_expected: expect
+    is_expected: is_expected
     its: it
     let!: let
     prepend_after: after
@@ -467,6 +471,7 @@ RSpec/Dialect:
     shared_examples_for: shared_examples
     specify: it
     subject!: subject
+    should: should
 RSpec/ExampleLength:
   Max: 10
 RSpec/ExcessiveDocstringSpacing:

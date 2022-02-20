@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Stack
   class Opcodes
     extend Dry::Container::Mixin
 
-    #register "0x00", Stop[:STOP, 0]
+    # register "0x00", Stop[:STOP, 0]
     register "0x01", Add[:ADD, 3]
     register "0x02", Multiply[:MUL, 5]
     register "0x03", Subtract[:SUB, 3]
@@ -14,7 +16,7 @@ module Stack
     register "0x09", MultiplyModulo[:MULMOD, 8]
     register "0x0A", Exponent[:EXP, 10]
     register "0x0B", SignExtend[:SIGNEXTEND, 5]
-    
+
     register "0x10", LessThan[:LT, 3]
     register "0x11", GreaterThan[:GT, 3]
     register "0x12", LessThan[:SLT, 3]
@@ -70,7 +72,7 @@ module Stack
     # register "0x59", MemorySize[:MSIZE, 2]
     # register "0x5A", GasRemaining[:GAS, 2]
     register "0x5B", JumpDestination[:JUMPDEST, 1]
-    
+
     register "0x60", Push[:PUSH1, 3]
     register "0x61", Push[:PUSH2, 3]
     register "0x62", Push[:PUSH3, 3]

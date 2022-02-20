@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Stack
   class Jump < Operation
-    def call(stack:, counter:)
-      destination, rest = stack
+    def call(stack:, **)
+      destination, = stack
 
-      return {
+      {
         stack: stack.drop(1),
         counter: destination
       }
