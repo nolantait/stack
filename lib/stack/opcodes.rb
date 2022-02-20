@@ -144,7 +144,7 @@ module Stack
     register "0xA4", Log[:LOG4, 1875]
 
     # register "0xF0", Create[:CREATE, 32000]
-    # register "0xF1", Call[:CALL, 40]
+    register "0xF1", Call[:CALL, 40]
     # register "0xF2", CallCode[:CALLCODE, 40]
     # register "0xF3", Return[:RETURN, 0]
     # register "0xF4", DelegateCall[:DELEGATECALL, 40]

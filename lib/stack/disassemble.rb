@@ -2,14 +2,18 @@
 
 module Stack
   class Disassemble
-    SPACING = " " * 6
+    Spacing = ->(index) { " " * (7 - index.to_s.size) }
     DELIMITER = "  => "
 
     Format = lambda do |instruction, byte_index|
-      formatted_bytes = [byte_index, SPACING, instruction.name].tap do |output|
+      formatted_bytes = [
+        byte_index,
+        Spacing.call(byte_index),
+        instruction.name
+      ].tap do |output|
         if instruction.total_bytes > 1
           output.concat(
-            [DELIMITER, instruction.operands.join(", ")]
+            [DELIMITER, instruction.operands.map(&:downcase).join]
           )
         end
       end
@@ -34,7 +38,7 @@ module Stack
         end
       end
 
-      formatted_instructions.join("\n")
+      formatted_instructions.join("\n") + "\n"
     end
 
     private
