@@ -32,6 +32,7 @@ require_relative "stack/operations/conditional_jump"
 require_relative "stack/operations/call_data_load"
 require_relative "stack/operations/duplicate"
 require_relative "stack/operations/pop"
+require_relative "stack/operations/caller"
 
 require_relative "stack/opcodes"
 require_relative "stack/instruction"

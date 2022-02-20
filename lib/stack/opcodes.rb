@@ -60,7 +60,7 @@ module Stack
     # register "0x47", SelfBalance[:SELFBALANCE, 5]
     # register "0x48", BaseFee[:BASEFEE, 2]
 
-    # register "0x50", Pop[:POP, 2]
+    register "0x50", Pop[:POP, 2]
     # register "0x51", MemoryLoad[:MLOAD, 3]
     register "0x52", MemoryStore[:MSTORE, 3]
     # register "0x53", MemoryStore8[:MSTORE8, 3]
