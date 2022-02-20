@@ -39,6 +39,8 @@ module Stack
 
       fail StackOverflow if @stack.size > MAX_STACK_DEPTH
       fail OutOfGas if @gas.negative?
+    # Rescue from STOP operation raising ExecutionStopped which means we should
+    # return the current state for inspection.
     rescue ExecutionStopped
       self
     end

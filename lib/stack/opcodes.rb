@@ -2,7 +2,14 @@
 
 module Stack
   class Opcodes
+    # Dry::Container allows for an easy hash style lookup that can be extended
+    # easily and auto injected into classes
     extend Dry::Container::Mixin
+
+    # Opcodes can be looked up during runtime.
+    # Each opcode returns an initialized function that can be called with an
+    # environment by an instruction.
+    # Each operation is initialized with a mneumonic and base gas cost
 
     register "0x00", Stop[:STOP, 0]
     register "0x01", Add[:ADD, 3]

@@ -2,6 +2,8 @@
 
 module Stack
   class Or < Operation
+    # Or is used here as the bitwise operation | not the other || boolean logic
+
     def call(stack:, **)
       {
         stack: update(stack)

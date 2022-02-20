@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# All requirements are loaded from this file.
+# No other files shall contain require statements.
 require "dry-container"
 require "dry-equalizer"
 
@@ -46,11 +48,11 @@ require_relative "stack/disassemble"
 require_relative "stack/bytecode"
 
 module Stack
+  # Stack is a ruby implementation of the Ethereum EVM which is particularly
+  # well suited for learning about how things work as ruby code can be
+  # remarkably expressable while still being correct vs pseudo code which can be
+  # quite abstract. Ruby is beautiful.
   class Error < StandardError; end
-  # Your code goes here...
-
-  MissingStackValues = Class.new(Error)
-  ExecutionStopped = Class.new(Error)
 
   def self.disassemble(bytecode)
     Disassemble.call(bytecode)

@@ -2,6 +2,10 @@
 
 module Stack
   class ConditionalJump < Operation
+    # JUMP to a JUMPDEST depending on whether the top of the stack is 1 or 0
+    # 1 = JUMP
+    # 0 = Don't JUMP
+
     def call(stack:, counter:, **)
       stack, counter = update(stack, counter)
 

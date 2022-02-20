@@ -2,6 +2,8 @@
 
 module Stack
   class And < Operation
+    # And is used here as the bitwise operation & not the other && boolean logic
+
     def call(stack:, **)
       {
         stack: update(stack)

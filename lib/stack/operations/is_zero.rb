@@ -2,6 +2,10 @@
 
 module Stack
   class IsZero < Operation
+    # Pushes 1 or 0 to the stack depending on if the top of the stack is 0 or 1
+    # Top is 0 => Push 1
+    # Top is 1 => Push 0
+
     def call(stack:, **)
       {
         stack: update(stack)

@@ -190,6 +190,9 @@ Lint/UselessTimes:
   Enabled: true
 Lint/Void:
   CheckForMethodsWithNoSideEffects: true
+Metrics/ClassLength:
+  Exclude:
+    - "lib/stack/opcodes.rb"
 Metrics/BlockLength:
   IgnoredMethods:
     - ips

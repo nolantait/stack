@@ -2,6 +2,9 @@
 
 module Stack
   class Call < Operation
+    # Calls an external contract and returns either 0 or 1 for success or
+    # failure.
+    #
     # Call stubbed to just return 1 for now.
     # TODO: implement calling other contracts
 

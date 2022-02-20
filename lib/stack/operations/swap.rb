@@ -2,6 +2,11 @@
 
 module Stack
   class Swap < Operation
+    # Exchange two stack items.
+    # SWAP1 swaps first and second
+    # SWAP2 swaps first and third
+    # And so on... up to SWAP16
+
     def call(stack:, **)
       raise_missing_stack_values(stack) if stack.size < depth
 

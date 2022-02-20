@@ -2,6 +2,8 @@
 
 module Stack
   class Not < Operation
+    # Not is used here as the bitwise operation ~ not the other ! boolean logic
+
     def call(stack:, **)
       {
         stack: update(stack)

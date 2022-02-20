@@ -2,6 +2,9 @@
 
 module Stack
   class SignExtend < Operation
+    # Still not 100% sure what this does.
+    # TODO: Spend time reading until I understand this
+
     def call(stack:, **)
       {
         stack: update(stack)

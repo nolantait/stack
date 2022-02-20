@@ -2,8 +2,12 @@
 
 module Stack
   class CallDataLoad < Operation
+    # Loads bytecode from an external contract and pushes it onto the stack.
+    #
+    # Currently does nothing, just removes an item from the stack.
+    # TODO: Implement this properly
+
     def call(stack:, data:, **)
-      # Currently does nothing, just removes an item from the stack
       {
         stack: update(stack, data)
       }

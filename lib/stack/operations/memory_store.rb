@@ -2,6 +2,8 @@
 
 module Stack
   class MemoryStore < Operation
+    # Add stack value stack[1] to memory offset stack[0]
+
     def call(stack:, memory:, **)
       {
         memory: update(stack, memory),

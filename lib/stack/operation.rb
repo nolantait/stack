@@ -2,6 +2,19 @@
 
 module Stack
   class Operation
+    # All operations inherit from this class
+    # A minimal implementation handles #call which should manipulate the runtime
+    # environment and return environment state after the operation completes.
+
+    # Allows initialization with a hash syntax:
+    # e.g. Stop[:STOP, 3]
+
+    MissingStackValues = Class.new(Error)
+
+    # Called during STOP opcode 0x00 and rescued in the runtime to return
+    # itself.
+    ExecutionStopped = Class.new(Error)
+
     def self.[](name, gas_cost)
       new(name, gas_cost)
     end
