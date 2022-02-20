@@ -2,10 +2,10 @@
 
 module Stack
   class CallDataSize < Operation
-    def call(stack:, **)
+    def call(stack:, data:, **)
       # Currently does nothing, just returns 0
       {
-        stack: stack.unshift(0)
+        stack: stack.unshift(data.size)
       }
     end
   end

@@ -39,7 +39,7 @@ module Stack
     # register "0x32", Origin[:ORIGIN, 2]
     # register "0x33", Caller[:CALLER, 2]
     # register "0x34", CallValue[:CALLVALUE, 2]
-    # register "0x35", CallDataLoad[:CALLDATALOAD, 3]
+    register "0x35", CallDataLoad[:CALLDATALOAD, 3]
     register "0x36", CallDataSize[:CALLDATASIZE, 2]
     # register "0x37", CallDataCopy[:CALLDATACOPY, 3]
     # register "0x38", CodeSize[:CODESIZE, 2]

@@ -27,12 +27,11 @@ module Stack
     private
 
     def push_opcode?(byte)
-      puts byte
       byte[0] == "6"
     end
 
     def bytes
-      @raw_bytecode.chars.each_slice(2).map(&:join)
+      @raw_bytecode.upcase.chars.each_slice(2).map(&:join)
     end
   end
 end
